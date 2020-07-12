@@ -2,6 +2,7 @@ package com.app.coronavirustracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
@@ -9,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * The Class CoronavirusTrackerApplication.
  */
+@EnableCaching		
 @SpringBootApplication
 @EnableScheduling
 //tell spring to create a proxy to call the schedular method within the specified freq

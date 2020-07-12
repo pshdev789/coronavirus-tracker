@@ -4,7 +4,8 @@
 
 <head>
 <title>Coronavirus Tracker</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta  http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
@@ -12,48 +13,165 @@
 </head>
 
 <body>
-
-	<h1>Coronavirus Tracker</h1>
-	<p>View the current number of corona cases reported across the
-		world</p>
-
-	<div class="jumbotron">
-		<h1 class="total-cases" th:text="${totalReportedCases}"></h1>
-
-		<p class="lead"><span>Total Cases Reported</span></p>
-
-		<hr class="my-4">
-
-		<h1 class="new-cases" th:text="${totalNewCases}"></h1>
-
-		<p class="lead"><span>Total New Cases Reported</span></p>
-		<a class="btn btn-primary btn-lg" href="#" role="button">Learn
-			more</a>
-
-	</div>
-
 	<div class="container">
+		<h1>Coronavirus Disease (COVID-19) Tracker</h1>
 
-		<table class="table">
-			<thead class="thead-light">
-				<tr>
-					<th>State</th>
-					<th>Country</th>
-					<th>Total Cases Reported</th>
-					<th>New Cases Reported</th>
-				</tr>
-				<tr th:each="loc : ${locationData}">
-					<td th:text="${loc.state}"></td>
-					<td th:text="${loc.country}"></td>
-					<td th:text="${loc.latestTotalCases}">0</td>
-					<td th:text="${loc.newCases}">0</td>
-				</tr>
-			</thead>
-		</table>
+		<p>View the current number of Corona cases reported across the
+			Globe</p>
+		<div class="jumbotron" id="worldRecordSum">
+			<table class="table">
+				<tbody>
+					<tr>
+
+						<td><h1 class="total-cases" style="color:orange;" th:text="${totalReportedCases}">0</h1>
+
+							<p class="lead">
+								<span>Total Cases Reported</span>
+							</p></td>
+
+						<td><h1 class="total-cases" style="color:green;" th:text="${totalRecoveredCases}">0</h1>
+
+							<p class="lead">
+								<span>Total Recovered Cases</span>
+							</p></td>
+						</td>
+						<td><h1 class="total-cases" style="color:#8B0000;" th:text="${totalDeathCases}">0</h1>
+
+							<p class="lead">
+								<span>Total Deaths</span>
+							</p></td>
+						</td>
+					</tr>
+
+					<tr>
+
+						<td><h1 class="new-cases" style="color:blue;" th:text="${totalNewCases}">0</h1>
+
+							<p class="lead">
+								<span>Daily New Cases</span>
+							</p></td>
+						<td><h1 class="new-cases" style="color:	#32CD32;" th:text="${totalNewRecovered}">0</h1>
+
+							<p class="lead">
+								<span>Daily Recovered</span>
+							</p></td>
+
+						<td><h1 class="new-cases" style="color:red;" th:text="${totalNewDeaths}">0</h1>
+
+							<p class="lead">
+								<span>New Deaths</span>
+							</p></td>
+
+					</tr>
+				</tbody>
+			</table>
+
+
+
+
+
+			<a class="btn btn-info btn-lg" href="#detailedData" role="button">Global Detailed
+				Report</a>
+
+		</div>
+
+
+
+		<p>View the current number of corona cases reported in Sri Lanka</p>
+
+		<div class="jumbotron">
+			<table class="table">
+				<tbody>
+					<tr>
+
+						<td><h1 class="total-cases" style="color:orange;" th:text="${totalReportedSL}">0</h1>
+
+							<p class="lead">
+								<span>Total Confirmed Cases</span>
+							</p></td>
+
+						<td><h1 class="total-cases" style="color:green;" th:text="${totalRecoveredSL}">0</h1>
+
+							<p class="lead">
+								<span>Recovered & Discharged</span>
+							</p></td>
+						</td>
+						<td><h1 class="total-cases" style="color:#8B0000;" th:text="${totalDeathSL}">0</h1>
+
+							<p class="lead">
+								<span>Total Deaths</span>
+							</p></td>
+						</td>
+					</tr>
+
+					<tr>
+
+						<td><h1 class="new-cases"  style="color:blue;" th:text="${totalNewSL}">0</h1>
+
+							<p class="lead">
+								<span>Daily New Cases</span>
+							</p></td>
+						<td><h1 class="new-cases" style="color:#32CD32;" th:text="${totalNewRecoveredSL}">0</h1>
+
+							<p class="lead">
+								<span>Daily Recovered</span>
+							</p></td>
+
+						<td><h1 class="new-cases"  style="color:red;" th:text="${totalNewDeathsSL}">0</h1>
+
+							<p class="lead">
+								<span>New Deaths</span>
+							</p></td>
+
+					</tr>
+				</tbody>
+			</table>
+
+
+
+
+
+			<a class="btn btn-primary btn-lg" href="#worldRecordSum"
+				role="button">Global Summary</a>
+
+		</div>
+
+
+
+		<div class="container" id="detailedData">
+		<h3>Global Detailed Report</h3>
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th>Country</th>
+						<th>Total Cases Reported</th>
+						<th>Cases Reported Today</th>
+						<th>Total Death(s)</th>
+						<th>New Death(s)</th>
+						<th>Total Recovered</th>
+						<th>Recovered Today</th>
+
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="all : ${allCases}">
+						<td th:text="${all.country}"></td>
+						<td th:text="${all.confirmedCases}"></td>
+
+						<td th:text="${all.newCases}"></td>
+
+						<td th:text="${all.deathCases}">0</td>
+						<td th:text="${all.newDeaths}">0</td>
+
+						<td th:text="${all.recoveredCases}">0</td>
+						<td th:text="${all.newRecovered}">0</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-
-
-
 </body>
 
 </html>
