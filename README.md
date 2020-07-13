@@ -6,7 +6,7 @@
 Johns Hopkins University Center for Systems Science and Engineering 
 (JHU CSSE) https://github.com/CSSEGISandData/COVID-19
 
-# Live Application
+# Live Dashboard 
 http://coronavirustrackerspringboot-env.eba-mpzzgt9p.us-east-2.elasticbeanstalk.com/
 
 
